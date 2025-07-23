@@ -1,0 +1,53 @@
+Grupo 01: DartLab Sessions
+
+André Felipe I Leite
+Contato: 55 (47) 991777-385 - felipe_santofortee@hotmail.com
+
+Daniel Vinhais Greenwood
+Contato: 55 (47) 99275-0301 - daniel_greenwood@estudante.sesisenai.org.br
+
+David Luis Kim 
+Contato: 55 (47) 99629-5564 david8.escola@gmail.com
+
+Luiz Threis 
+Contato: 55 (47) 99117-9609 - luizthreis@gmail.com
+
+Cartão 1 - Situação:
+O cliente pediu uma nova funcionalidade no meio da Sprint.
+Papel responsável: Product owner
+
+Cartão 2 - Situação:
+A internet da equipe caiu e ninguém consegue trabalhar.
+Papel responsável:  Scrum Master
+
+Cartão 3 - Situação:
+O backlog está desorganizado e com itens mal descritos.
+Papel responsável:  Product Owner
+
+Cartão 4 - Situação:
+O time precisa decidir quanto trabalho cabe na próxima Sprint.
+Papel responsável: Dev Team
+
+Cartão 5 - Situação:
+Alguém externo está tentando interromper o trabalho da equipe durante a Sprint.
+Papel responsável:  Scrum Master
+
+Cartão 6 - Situação:
+O PO quer adicionar um item de última hora no meio da Sprint.
+Papel responsável:  Scrum Master
+
+Cartão 7 - Situação:
+Os desenvolvedores estão com dúvidas sobre como implementar uma funcionalidade.
+Papel responsável: Dev Team
+
+Cartão 8 - Situação:
+Um bug crítico foi encontrado e precisa ser resolvido urgentemente.
+Papel responsável: Dev Team
+
+Cartão 9 - Situação:
+As prioridades do backlog não estão alinhadas com o valor de negócio.
+Papel responsável: Product Owner
+
+Cartão 10 - Situação:
+A equipe sente que não está evoluindo bem nas cerimônias Scrum.
+Papel responsável: Scrum Master
