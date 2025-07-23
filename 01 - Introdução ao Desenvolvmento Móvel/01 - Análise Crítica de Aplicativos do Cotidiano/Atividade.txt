@@ -1,0 +1,181 @@
+EAD 01 - Análise Crítica de Aplicativos do Cotidiano - 20/06/2025
+Condições de conclusão
+Tipo de atividade: Não avaliativo
+Aberto: sexta-feira, 20 jun. 2025, 13:30
+Vencimento: quarta-feira, 25 jun. 2025, 13:30
+Levantamento de Apps Usados no Dia a Dia
+
+Objetivo:
+
+Nesta atividade, você será desafiado(a) a analisar um aplicativo que usa no seu cotidiano e refletir sobre como um desenvolvedor mobile pode enxergar sua funcionalidade, design e interação.
+
+Instruções:
+
+           1. Escolha dos aplicativos:
+
+o   Você deverá escolher 3 aplicativos (preferencialmente de nichos diferentes) e listar as funcionalidades principais de cada um.
+Dica: escolha aplicativos mais simples
+
+           2. Levantamento de Apps:
+
+o   Responda às seguintes perguntas sobre cada um desses apps:
+
+§  Qual o nome do app e o que ele faz?
+
+§  Quais funcionalidades ele oferece?
+
+§  Como o app responde aos erros dos usuários?
+(Exemplo: senha errada, campo vazio)
+
+§  Quais telas o app tem? (Login, Feed, Perfil, etc.)
+
+§  Se você fosse desenvolvedor(a), o que mudaria no design ou na navegação?
+
+           3. Escolha de um App para Análise Detalhada:
+
+o   Escolha 1 app da lista para fazer uma análise mais detalhada.
+
+o   Elabore um relatório reflexivo de no máximo duas páginas, com as seguintes informações:
+
+§  Como você descreve a estrutura desse app?
+
+§  Quais as partes mais importantes para que o app funcione corretamente?
+
+§  O que você faria de diferente para melhorar a experiência do usuário?
+
+           4. Entrega e Apresentação:
+
+o   Envio: as informações devem ser enviadas dentro desta atividade.
+
+Procedimentos para efetuar o envio:
+
+                 a) Botão "Adicionar envio": Abaixo das instruções, há um botão chamado “Adicionar envio”.
+
+                 b) Área de texto: Ao clicar nesse botão, você será levado a uma página com um editor de texto completo (Editor HTML do Moodle), 
+
+                     Este editor tem:
+
+                             - Negrito, itálico, sublinhado, listas, tabelas, etc.
+
+                             - Campos expandidos para texto longo (pode colar o relatório completo ali).
+
+                             - Suporte a colar conteúdo de Word ou Google Docs.
+
+                 c) Botão “Salvar mudanças”: Após escrever ou colar o texto, você deverá clicar em “Salvar mudanças”.
+
+                 d) Confirmação: O sistema mostrará que o envio foi realizado.
+
+                                             Se o prazo de término da atividade ainda não se cumpriu, você poderá editar o envio e reenviar várias vezes.
+
+5. Critérios de Avaliação:
+
+o   Clareza e profundidade na análise do app (7 pontos).
+
+o   Organização e qualidade do relatório (3 pontos).
+
+          6. Dicas para a atividade:
+
+              Seja crítico(a) ao analisar os aplicativos. Pense no papel de um desenvolvedor e como você melhoraria a experiência do usuário.
+
+              Aproveite para pensar no design e na usabilidade dos apps, não apenas nas funcionalidades.
+
+Status de envio
+Status de envioEnviado para avaliação
+Status da avaliação	Não há notas
+Tempo restante	A tarefa foi enviada 4 dias 22 horas adiantado
+Última modificação	sexta-feira, 20 jun. 2025, 15:29
+Texto online	
+EAD 01 - Análise Crítica de Aplicativos do Cotidiano - 20/06/2025
+ 
+
+Levantamento de Apps Usados no Dia a Dia
+ 
+
+Objetivo:
+Nesta atividade, você será desafiado(a) a analisar um aplicativo que usa no seu cotidiano e refletir sobre como um desenvolvedor mobile pode enxergar sua funcionalidade, design e interação.
+ 
+
+Instruções:
+1. Escolha dos aplicativos: o   Você deverá escolher 3 aplicativos (preferencialmente de nichos diferentes) e listar as funcionalidades principais de cada um. Dica: escolha aplicativos mais simples
+Resposta: 
+Ifood, Nubank, DuoLingo.
+ 
+
+2. Levantamento de Apps:
+o Responda às seguintes perguntas sobre cada um desses apps:
+§  Qual o nome do app e o que ele faz?
+§  Quais funcionalidades ele oferece?
+§  Como o app responde aos erros dos usuários?
+(Exemplo: senha errada, campo vazio)
+§  Quais telas o app tem? (Login, Feed, Perfil, etc.)
+§  Se você fosse desenvolvedor(a), o que mudaria no design ou na navegação?
+
+Respostas:
+ 	
+IFOOD
+NUBANK
+DUOLINGO
+o que ele faz?
+aplicativo de delivery que facilita a conexão de usuários e restaurantes para pedidos de comidas e bebidas e pagamentos.
+ simplifica o sistema financeiro e oferece serviços bancários mais acessíveis através de tecnologia. tanto para usuário quanto para empresas.
+Ensina idiomas de com atividades gamificadas geralmente conteúdo rápido e curto introduzindo uma nova linguagem a ser estudada.
+Quais funcionalidades ele oferece?
+Login, Cadastro, Telas especificas de usuário e restaurantes para comercio de alimentos, Carrinho de compras, Tipo de pagamento, Perfil...
+Consulta de saldo e fatura, Transferência (Pix), Bloqueio e desbloqueio de cartão, Chat com atendente...
+Aulas rápidas por tema, Pontuação e ranking entre amigos, Desafios diários, Feedback imediato de erros, aprendizado de um novo idioma, perfil premim e perfil gratuito...
+Como o app responde aos erros dos usuários?
+Ele apresenta um local  especifico para suporte técnico, além de conexão b2b no caso de pedidos errados, cancelados ou até mesmo para devoluções.
+com dicas  e sinalizações, geralmente em tonalidade vermelho, e conta com um suporte especializado. em termos de transações erradas.
+Demonstra a resposta correta  para subir de nível, apresenta um sistema de vida gamificado 5 vidas diárias, além de conter explicação didática para erros futuros ou frequentes, Indicando a palavra ou frase errada em vermelho.
+Quais telas o app tem? 
+Ele apresenta diversas telas para facilitar a usabilidade do usuário inclusas nessas telas temos:
+ Inicio, Buscar, Pedidos, Perfil, avisos e localização.
+Ele possuí telas para mais úteis para cuidar do nosso dinheiro:
+ Inicial, Área Pix, Transferência, Depositar, Meus Cartões, entre outras.
+Possuí telas gamificadas, deixando um aspecto mais divertido para o usuário, além de proporcionar competição interna entre usuários dentre essas telas temos: tela de perfil, lição, progresso, ligas, além de suporte e configurações.
+Como desenvolvedor(a), o que mudaria no design ou na navegação?
+Simplificaria o acesso ao histórico de pedidos,  Tornaria o botão de cancelamento mais acessível no acompanhamento do pedido.
+Tornaria mais simples a navegação entre cartões e contas Criaria atalhos personalizáveis na tela inicial de maneira personalizavel.
+Deixaria o botão de sair da aula mais visível, Melhoraria a visualização dos erros cometidos fornecendo uma dashboard de erros.
+ 
+ 
+3. Escolha de um App para Análise Detalhada:
+o   Escolha 1 app da lista para fazer uma análise mais detalhada.
+o   Elabore um relatório reflexivo de no máximo duas páginas, com as seguintes informações:
+ 
+
+§  Como você descreve a estrutura desse app?
+Resposta:
+A estrutura do Duolingo é altamente intuitiva, ela é baseada em uma arquitetura de informação de módulos onde os fluxos são lineares, se um usuário inicia sua lição as telas subsequentes são relacionadas ao tema, se ele vai para inicio ou configuração somente informações desse nicho são apresentadas. Resumindo usuário percorre lições em ordem sequencial, com blocos visuais que representam cada etapa. 
+O app adota o modelo de navegação em um menu inferior onde cada ícone leva a uma área principal:
+Home (progresso de lições);
+Conquistas/Ranking (interação social);
+Loja (itens e bônus);
+Perfil (estatísticas e configurações).
+O layout é minimalista, com uso eficiente de espaços em branco, cores vibrantes e ilustrações amigáveis que reduzem a carga cognitiva trazem um aspecto mais limpo. Cada lição apresenta feedback imediato visual e sonoro, mantendo o engajamento do usuário por meio de gamificação.
+ 
+
+§  Quais as partes mais importantes para que o app funcione corretamente?
+Resposta: 
+Fluxo de aprendizado linear e gamificado:
+Essencial para manter a motivação do usuário. O sistema de progressão é claro e recompensador, com lições curtas e objetivos diários.
+Sistema de feedback e correção imediata:
+O Duolingo corrige respostas erradas instantaneamente, destacando os erros e sugerindo a resposta correta, o que reforça o aprendizado em tempo real.
+Notificações inteligentes:
+São essenciais para retenção. O app envia lembretes diários com mensagens personalizadas, promovendo o uso recorrente sem parecer intrusivo.
+Gamificação (vidas, pontuação, conquistas):
+Ajuda a criar hábito e engajamento. O sistema de streaks, ligas e moedas oferece uma sensação de conquista constante.
+Design responsivo e acessível:
+O app funciona bem tanto em smartphones quanto tablets. Os botões são bem posicionados, há contraste adequado e uso de fontes legíveis.
+§  O que você faria de diferente para melhorar a experiência do usuário?
+Resposta:
+Acessibilidade: 
+Como app ainda já tem sua cara desenvolvida em 2011,e de lá pra cá não teve muitas mudanças significativas, uma acessibilidade, para pessoas com deficiencia visual, um modo para pessoas mais velhas, como botões maiores, linguagem mais simplificada, ajudaria a alcançar um público pouco selecionado aumentando numero de usuários e sendo melhor desempenhada para tal função.
+Modo escuro real: 
+O modo escuro atual ainda apresenta algumas telas com fundo claro, o que pode gerar desconforto visual. Um modo escuro total, com contraste equilibrado, seria uma melhoria significativa na acessibilidade e usabilidade noturna.
+Revisão de erros cometidos: 
+Atualmente, após concluir uma lição, o usuário não consegue revisar com facilidade todos os erros que cometeu. Criaria uma nova tela de “Histórico de Erros” com filtros por tema, nível e tipo de erro, ajudando o usuário a focar nas dificuldades reais. 
+Melhoria no fluxo de saída de lições: 
+A opção de sair de uma lição em andamento está escondida no menu. Uma solução seria tornar esse botão visível e acessível no topo da tela, com um alerta de progresso salvo automaticamente.
+Personalização de trilhas: 
+Hoje, o caminho de aprendizado é igual para todos. Poderia haver sugestões personalizadas de lições com base nos erros mais frequentes, preferências e objetivos (por exemplo: “viagem”, “negócios”, “conversação”).
