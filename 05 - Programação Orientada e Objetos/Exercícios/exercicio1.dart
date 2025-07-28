@@ -4,6 +4,7 @@ void exercicio1() {
   bool continuar = true;
 
   while (continuar) {
+    
     // Solicita os dois números inteiros
     stdout.write('Digite o primeiro número inteiro: ');
     int? num1 = int.tryParse(stdin.readLineSync()!);
