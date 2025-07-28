@@ -1,5 +1,3 @@
-import 'Cliente.dart';
-
 void main() {
   Cliente cli1 = new Cliente(1000, "João de Souza", "111.222.333-44");
   // chama o método para mostrar os dados
