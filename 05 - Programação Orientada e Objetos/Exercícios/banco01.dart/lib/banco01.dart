@@ -1,27 +1,34 @@
 import 'package:mysql_client/mysql_client.dart';
 
-// Configuração de conexão com banco de dados
-// Diretivas para conexão com o banco
-const String _dbHost = '127.0.0.1'; // localhost
+/// -----------------------------------------------------------
+/// CONFIGURAÇÃO DE CONEXÃO COM O BANCO DE DADOS
+/// -----------------------------------------------------------
+
+// Endereço do servidor de banco de dados (127.0.0.1 é localhost)
+const String _dbHost = '127.0.0.1';
+// Porta padrão do MySQL
 const int _dbPort = 3306;
 
-// diretivas do usuário e o nome do database (altere conforme a sua necessidade)
-const String _dbUser = 'david';
+// Credenciais de acesso e nome do banco de dados
+const String _dbUser = 'david1;
 const String _dbPassword = 'senha';
 const String _dbDatabase = 'biblioteca';
 
-//Início do async
+/// -----------------------------------------------------------
+/// FUNÇÃO PRINCIPAL
+/// -----------------------------------------------------------
 void main() async {
-  // Inicializa a conexão com o banco de dados
+  // Tenta estabelecer conexão
   final conn = await _connectToDatabase();
 
   if (conn == null) {
-    print('Não foi possível estabelecer conexão com o banco de dados.');
+    print('❌ Não foi possível estabelecer conexão com o banco de dados.');
     return;
   }
 
-  print('Conectado ao banco de dados');
+  print('✅ Conectado ao banco de dados');
 
+  // Tentativa de inclusão de livro
   try {
     print('\n--- Incluindo Livro ---');
     await _incluirLivro(
@@ -30,74 +37,91 @@ void main() async {
       'Winston Churchill',
     );
   } catch (erro) {
-    print('Ocorreu na inclusão do livro: $erro');
+    print('❌ Ocorreu um erro na inclusão do livro: $erro');
   }
 
+  // Tentativa de listagem dos livros
   try {
     print('\n--- Listando Livros ---');
     await _listarLivros(conn);
   } catch (erro) {
-    print('Ocorreu na listagem dos livros: $erro');
+    print('❌ Ocorreu um erro na listagem dos livros: $erro');
   } finally {
+    // Sempre fecha a conexão no final
     await conn.close();
-    print('Conexão com o MySQL fechada.');
+    print('🔒 Conexão com o MySQL fechada.');
   }
 }
 
-// --- Funções CRUD ---
+/// -----------------------------------------------------------
+/// FUNÇÕES DE CONEXÃO
+/// -----------------------------------------------------------
 
+/// Conecta ao banco de dados e retorna um objeto [MySQLConnection]
 Future<MySQLConnection?> _connectToDatabase() async {
   try {
-    // Usando MySQLConnection.createConnection para uma abordagem mais moderna
+    // Cria a conexão usando parâmetros configurados
     final conn = await MySQLConnection.createConnection(
       host: _dbHost,
       port: _dbPort,
       userName: _dbUser,
       databaseName: _dbDatabase,
       password: _dbPassword,
+      secure: false,
     );
+
+    // Estabelece a conexão
     await conn.connect();
     return conn;
   } catch (erro) {
-    print('Erro ao conectar ao banco de dados: $erro');
+    print('❌ Erro ao conectar ao banco de dados: $erro');
     return null;
   }
 }
 
+/// -----------------------------------------------------------
+/// FUNÇÕES CRUD
+/// -----------------------------------------------------------
+
+/// Inclui um livro na tabela `livros`
 Future<void> _incluirLivro(
-  MySQLConnection conn,
-  String titulo,
-  String autor,
-) async {
+    MySQLConnection conn,
+    String titulo,
+    String autor,
+    ) async {
   try {
-    var result = await conn.execute(
-      'insert into livros (titulo,autor) values (:titulo,:autor)',
+    await conn.execute(
+      // Usando parâmetros nomeados para evitar SQL Injection
+      'INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)',
       {'titulo': titulo, 'autor': autor},
     );
-    print('Livro incluido com sucesso');
+    print('📚 Livro incluído com sucesso!');
   } catch (erro) {
-    print('Inclusão com problema $erro');
+    print('❌ Erro na inclusão do livro: $erro');
   }
 }
 
+/// Lista todos os livros da tabela `livros`
 Future<void> _listarLivros(MySQLConnection conn) async {
   try {
-    var resultado = await conn.execute(
-      'select idlivro,titulo,autor from livros order by idlivro',
+    final resultado = await conn.execute(
+      'SELECT idlivro, titulo, autor FROM livros ORDER BY idlivro',
     );
 
+    // Caso a tabela esteja vazia
     if (resultado.rows.isEmpty) {
-      print('Cara. Não achei nada');
+      print('⚠️ Nenhum livro encontrado.');
       return;
     }
 
+    // Percorre e exibe cada linha da consulta
     for (var linha in resultado.rows) {
       final id = linha.typedColByName<int>('idlivro');
       final titulo = linha.typedColByName<String>('titulo');
       final autor = linha.typedColByName<String>('autor');
-      print('Id: $id, Titulo: $titulo,  Autor: $autor');
+      print('Id: $id | Título: $titulo | Autor: $autor');
     }
   } catch (erro) {
-    print('Erro ao listar livros $erro');
+    print('❌ Erro ao listar livros: $erro');
   }
 }
