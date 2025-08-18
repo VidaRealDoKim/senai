@@ -1,0 +1,21 @@
+{
+  "roots": [
+    "analise_temperaturas_dart"
+  ],
+  "packages": [
+    {
+      "name": "analise_temperaturas_dart",
+      "version": "1.0.0",
+      "dependencies": [
+        "csv"
+      ],
+      "devDependencies": []
+    },
+    {
+      "name": "csv",
+      "version": "5.1.1",
+      "dependencies": []
+    }
+  ],
+  "configVersion": 1
+}

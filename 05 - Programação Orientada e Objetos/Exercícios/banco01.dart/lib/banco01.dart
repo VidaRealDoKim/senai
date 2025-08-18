@@ -10,7 +10,7 @@ const String _dbHost = '127.0.0.1';
 const int _dbPort = 3306;
 
 // Credenciais de acesso e nome do banco de dados
-const String _dbUser = 'david1;
+const String _dbUser = 'david1';
 const String _dbPassword = 'senha';
 const String _dbDatabase = 'biblioteca';
 

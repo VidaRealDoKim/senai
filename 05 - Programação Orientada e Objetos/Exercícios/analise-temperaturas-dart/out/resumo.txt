@@ -1,0 +1,8 @@
+=== RESUMO DE TEMPERATURAS ===
+Período: 2025-08-01 08:00:00.000 a 2025-08-01 13:00:00.000
+Leituras: 6
+Mínima: 17.80 °C
+Máxima: 30.50 °C
+Média: 23.85 °C
+Mediana: 23.55 °C
+Desvio Padrão: 3.77
