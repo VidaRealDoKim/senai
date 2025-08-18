@@ -1,4 +1,4 @@
-name: bancoapi
+name: BancoDeApi
 description: Exemplo de uso de API
 version: 1.0.0
 
@@ -8,5 +8,5 @@ environment:
 dependencies:
   mysql_client: ^0.0.27 # Mantido para acessar o MYSQL
   shelf: ^1.4.1 # Framework HTTP para Dart
-  shelf_router: ^1.1.0 # para roteamento das URL's 
+  shelf_router: ^1.1.0 # para roteamento das URL's
 
