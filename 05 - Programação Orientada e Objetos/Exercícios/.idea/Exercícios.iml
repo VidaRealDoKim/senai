@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/bancoapi/api_server/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/bancoapi/api_server/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/bancoapi/api_server/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bancoapi/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bancoapi/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bancoapi/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
