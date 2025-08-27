@@ -1,0 +1,9 @@
+name: meu_projeto_dart_mysql
+description: Projeto Dart para MySQL - Clientes e Pedidos
+version: 1.0.0
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  mysql1: ^0.20.0
