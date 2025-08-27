@@ -4,7 +4,7 @@ setlocal ENABLEDELAYEDEXPANSION
 REM =========================
 REM CONFIGURAÇÕES FIXAS
 REM =========================
-set "SDK_PATH=C:\android\SDK"
+set "SDK_PATH=C:\Android\SDK"
 set "ADB_PATH=%SDK_PATH%\platform-tools\adb.exe"
 set "EMU_PATH=%SDK_PATH%\emulator\emulator.exe"
 set "AVD_NAME=Pixel_3_API_35"
