@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "meuapp",
-    "slug": "meuapp",
+    "name": "HabitHero",
+    "slug": "helloworld",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +24,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e8583a3e-6cd1-4256-a365-d30ad8b4bcbe"
+      }
+    },
+    "owner": "vidarealdokim"
   }
 }
