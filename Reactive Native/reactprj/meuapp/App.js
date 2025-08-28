@@ -1,56 +1,60 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 export default function App() {
-  const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const handlePress = (value) => {
-    if (value === "=") {    
-      try {
-        setResult(eval(input).toString());
-      } catch (e) {
-        setResult("Erro");
-      }
-    } else if (value === "C") {
-      setInput("");
-      setResult("");
+  // Usuário e senha fixos
+  const validEmail = 'teste@teste.com';
+  const validPassword = '123456';
+
+  const handleLogin = () => {
+    if (email === validEmail && password === validPassword) {
+      setLoggedIn(true);
+      setMessage('');
     } else {
-      setInput(input + value);
+      setMessage('Email ou senha incorretos');
     }
   };
 
-  const buttons = [
-    ["7", "8", "9", "/"],
-    ["4", "5", "6", "*"],
-    ["1", "2", "3", "-"],
-    ["0", ".", "=", "+"],
-    ["C"]
-  ];
+  const handleLogout = () => {
+    setLoggedIn(false);
+    setEmail('');
+    setPassword('');
+  };
+
+  if (!loggedIn) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Login</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <Button title="Entrar" onPress={handleLogin} />
+        {message ? <Text style={styles.message}>{message}</Text> : null}
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.display}>
-        <Text style={styles.input}>{input}</Text>
-        <Text style={styles.result}>{result}</Text>
-      </View>
-      <View style={styles.buttons}>
-        {buttons.map((row, rowIndex) => (
-          <View key={rowIndex} style={styles.row}>
-            {row.map((button) => (
-              <TouchableOpacity
-                key={button}
-                style={styles.button}
-                onPress={() => handlePress(button)}
-              >
-                <Text style={styles.buttonText}>{button}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        ))}
-      </View>
-      <StatusBar style="auto" />
+      <Text style={styles.title}>Bem-vindo!</Text>
+      <Button title="Sair" onPress={handleLogout} color="#dc3545" />
     </View>
   );
 }
@@ -58,44 +62,28 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1E1E1E',
     justifyContent: 'center',
+    paddingHorizontal: 30,
+    backgroundColor: '#f0f0f0',
   },
-  display: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    padding: 20,
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   input: {
-    fontSize: 32,
-    color: '#fff',
+    height: 50,
+    borderColor: '#999',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 15,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
   },
-  result: {
-    fontSize: 24,
-    color: '#888',
-    marginTop: 10,
-  },
-  buttons: {
-    flex: 5,
-    padding: 10,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-  },
-  button: {
-    backgroundColor: '#333',
-    flex: 1,
-    margin: 5,
-    height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  buttonText: {
-    fontSize: 24,
-    color: '#fff',
+  message: {
+    marginTop: 15,
+    textAlign: 'center',
+    color: 'red',
   },
 });
