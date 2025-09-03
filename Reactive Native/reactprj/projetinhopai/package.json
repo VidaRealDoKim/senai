@@ -1,6 +1,5 @@
 {
-  "name": "my-app",
-  "license": "0BSD",
+  "name": "projetinhopai",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
