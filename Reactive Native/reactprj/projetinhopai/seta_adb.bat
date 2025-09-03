@@ -7,7 +7,7 @@ REM =========================
 set "SDK_PATH=C:\android\SDK"
 set "ADB_PATH=%SDK_PATH%\platform-tools\adb.exe"
 set "EMU_PATH=%SDK_PATH%\emulator\emulator.exe"
-set "AVD_NAME=Pixel_3_API_36"
+set "AVD_NAME=Pixel_3_API_35"
 
 REM =========================
 REM AJUSTE DAS VARIÁVEIS
