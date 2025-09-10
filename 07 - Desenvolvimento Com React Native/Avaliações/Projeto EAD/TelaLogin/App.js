@@ -16,10 +16,12 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Dashboard
+// Telas
 import Dashboard from './Dashboard';
+import Registro from './Registro';
+import RedefinirSenha from './RedefinirSenha';
 
-// Estilos importados do arquivo styles.js
+// Estilos
 import { styles } from './styles';
 
 const Stack = createNativeStackNavigator();
@@ -40,11 +42,24 @@ export default function App() {
           component={Dashboard}
           options={{ headerShown: false }}
         />
+        {/* Tela de Registro */}
+        <Stack.Screen
+          name="Registro"
+          component={Registro}
+          options={{ headerShown: false }}
+        />
+        {/* Tela de Redefinir Senha */}
+        <Stack.Screen
+          name="RedefinirSenha"
+          component={RedefinirSenha}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
+// -------------------- LOGIN --------------------
 function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -58,7 +73,6 @@ function LoginScreen({ navigation }) {
     }
   }, [error]);
 
-  // Função de login fixo
   const handleLogin = () => {
     if (!email.includes('@')) {
       setError('Por favor, insira um e-mail válido!');
@@ -77,26 +91,19 @@ function LoginScreen({ navigation }) {
     }
   };
 
-  // Links de registrar e redefinir senha
-  const handleRegister = () => Alert.alert("Tela de Registro em breve!");
-  const handleForgotPassword = () => Alert.alert("Tela de redefinição de senha em breve!");
-
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         style={{ flex: 1, alignItems: 'center', justifyContent: 'center', width: '100%' }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        {/* Mensagem de erro */}
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-        {/* Logo */}
         <Image
           source={{ uri: 'https://play-lh.googleusercontent.com/ZrVintO0bkm5Vn_iKIT7AR_78M1KcrwHPFSQGAiybeqBhyr1FqHm95Q8-72JNkkygw=w480-h960-rw' }}
           style={styles.logo}
         />
 
-        {/* Campos de entrada */}
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -114,7 +121,6 @@ function LoginScreen({ navigation }) {
           />
         </View>
 
-        {/* Botão de login */}
         <TouchableOpacity
           style={[styles.button, (!email || !senha) && styles.buttonDisabled]}
           onPress={handleLogin}
@@ -123,26 +129,19 @@ function LoginScreen({ navigation }) {
           <Text style={styles.buttonText}>ENTRAR</Text>
         </TouchableOpacity>
 
-        {/* Links */}
         <View style={styles.links}>
-          <Pressable onPress={handleRegister}>
+          <Pressable onPress={() => navigation.navigate('Registro')}>
             <Text style={styles.linkText}>Registrar-se</Text>
           </Pressable>
-          <Pressable onPress={handleForgotPassword}>
+          <Pressable onPress={() => navigation.navigate('RedefinirSenha')}>
             <Text style={styles.linkText}>Redefinir a Senha</Text>
           </Pressable>
         </View>
       </KeyboardAvoidingView>
 
-      {/* Login e senha fixos para professor */}
-      <View style={{
-        position: 'absolute',
-        bottom: 32,
-        width: '100%',
-        alignItems: 'center',
-      }}>
-        <Text style={{color: '#3b5998', fontSize: 14}}>Login: admin@burguerking.com</Text>
-        <Text style={{color: '#3b5998', fontSize: 14}}>Senha: hamburguer</Text>
+      <View style={{ position: 'absolute', bottom: 32, width: '100%', alignItems: 'center' }}>
+        <Text style={{ color: '#3b5998', fontSize: 14 }}>Login: admin@burguerking.com</Text>
+        <Text style={{ color: '#3b5998', fontSize: 14 }}>Senha: hamburguer</Text>
       </View>
     </SafeAreaView>
   );
