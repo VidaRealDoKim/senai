@@ -1,77 +1,100 @@
-// Importa React e hooks
-import React, { useState } from 'react';
-
-// Importa componentes do React Native
+import React, { useState, useEffect } from 'react';
 import {
-  View,       // Container principal
-  Text,       // Para exibir rótulos e mensagens
-  TextInput,  // Campo de entrada de texto
-  Button,     // Botão de ação
-  Image,      // Para exibir imagem ou logo
-  StyleSheet, // Para estilizar os componentes
-  Alert,      // Para exibir alertas
-  Pressable   // Para criar links clicáveis
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Alert,
+  Pressable,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 
-// Componente principal do App
 export default function App() {
-  // Estados para armazenar valores do e-mail e senha
+  // Estados para email, senha e mensagem de erro
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [error, setError] = useState('');
 
-  // Função executada ao clicar no botão "ENTRAR"
+  // Limpa a mensagem de erro automaticamente após 3 segundos
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(''), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  // Função do botão "ENTRAR"
   const handleLogin = () => {
-    Alert.alert("Login realizado com sucesso!");
+    // Validação mínima: e-mail precisa ter "@"
+    if (!email.includes('@')) {
+      setError('Por favor, insira um e-mail válido!');
+      return;
+    }
+
+    // Validação mínima: senha preenchida
+    if (!senha) {
+      setError('Por favor, insira sua senha!');
+      return;
+    }
+
+    // Login fixo
+    if (email === 'admin@burguerking.com' && senha === 'hamburguer') {
+      setError('');
+      Alert.alert('Login realizado com sucesso!');
+    } else {
+      setError('Usuário ou senha incorretos!');
+    }
   };
 
-  // Função executada ao clicar no link "Registrar-se"
-  const handleRegister = () => {
-    Alert.alert("Tela de Registro em breve!");
-  };
-
-  // Função executada ao clicar no link "Redefinir a Senha"
-  const handleForgotPassword = () => {
-    Alert.alert("Tela de redefinição de senha em breve!");
-  };
+  // Funções dos links
+  const handleRegister = () => Alert.alert("Tela de Registro em breve!");
+  const handleForgotPassword = () => Alert.alert("Tela de redefinição de senha em breve!");
 
   return (
-    // Container principal da tela
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      {/* Mensagem de erro no topo */}
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-      {/* Logo do aplicativo */}
+      {/* Logo do app */}
       <Image
-        source={{uri: "https://reactnative.dev/img/tiny_logo.png"}}
+        source={{uri: 'https://play-lh.googleusercontent.com/ZrVintO0bkm5Vn_iKIT7AR_78M1KcrwHPFSQGAiybeqBhyr1FqHm95Q8-72JNkkygw=w480-h960-rw'}}
         style={styles.logo}
       />
 
-      {/* Campo de entrada para e-mail */}
-      <Text style={styles.label}>E-mail</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Digite seu e-mail"
-        keyboardType="email-address" // Define tipo de teclado específico para e-mail
-        value={email}                 // Valor atual do estado
-        onChangeText={setEmail}       // Atualiza o estado ao digitar
-      />
-
-      {/* Campo de entrada para senha */}
-      <Text style={styles.label}>Senha</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Digite sua senha"
-        secureTextEntry               // Esconde os caracteres digitados
-        value={senha}                 // Valor atual do estado
-        onChangeText={setSenha}       // Atualiza o estado ao digitar
-      />
+      {/* Campos de entrada */}
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="E-mail"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          secureTextEntry
+          value={senha}
+          onChangeText={setSenha}
+        />
+      </View>
 
       {/* Botão de login */}
-      <Button
-        title="ENTRAR"
-        onPress={handleLogin}         // Chama função de login
-        disabled={!email || !senha}   // Habilita somente se ambos os campos estiverem preenchidos
-      />
+      <TouchableOpacity
+        style={[styles.button, (!email || !senha) && styles.buttonDisabled]}
+        onPress={handleLogin}
+        disabled={!email || !senha}
+      >
+        <Text style={styles.buttonText}>ENTRAR</Text>
+      </TouchableOpacity>
 
-      {/* Links de "Registrar-se" e "Redefinir a Senha" */}
+      {/* Links */}
       <View style={styles.links}>
         <Pressable onPress={handleRegister}>
           <Text style={styles.linkText}>Registrar-se</Text>
@@ -80,46 +103,68 @@ export default function App() {
           <Text style={styles.linkText}>Redefinir a Senha</Text>
         </Pressable>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
-// Estilos da tela
+// Estilos dos componentes
 const styles = StyleSheet.create({
   container: {
-    flex: 1,                 // Ocupa toda a tela
-    justifyContent: 'center', // Centraliza verticalmente
-    alignItems: 'center',    // Centraliza horizontalmente
-    padding: 20,             // Espaçamento interno
-    backgroundColor: '#f2f2f2', // Cor de fundo clara
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#f6ecda', // Fundo amarelo estilo Burger King
+  },
+  errorText: {
+    color: '#E4002B', // Vermelho para mensagem de erro
+    fontWeight: 'bold',
+    marginBottom: 10,
+    fontSize: 16,
+    textAlign: 'center',
   },
   logo: {
-    width: 80,        // Largura do logo
-    height: 80,       // Altura do logo
-    marginBottom: 30, // Espaço abaixo do logo
+    width: 120,
+    height: 120,
+    marginBottom: 40,
+    borderRadius: 60,
+    backgroundColor: '#fff',
   },
-  label: {
-    alignSelf: 'flex-start', // Alinha à esquerda
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 10,
+  inputContainer: {
+    width: '100%',
+    marginBottom: 20,
   },
   input: {
-    width: '100%',        // Campo ocupa toda largura do container
-    borderWidth: 1,       // Largura da borda
-    borderColor: '#aaa',  // Cor da borda
-    borderRadius: 8,      // Cantos arredondados
-    padding: 10,          // Espaçamento interno
-    marginBottom: 10,     // Espaço abaixo do campo
-    backgroundColor: '#fff', // Fundo branco
+    backgroundColor: '#fff',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginBottom: 15,
+  },
+  button: {
+    backgroundColor: '#E4002B', // Vermelho intenso
+    paddingVertical: 15,
+    paddingHorizontal: 100,
+    borderRadius: 30,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonDisabled: {
+    backgroundColor: '#A0A0A0', // Cinza quando desabilitado
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
   links: {
-    marginTop: 20,        // Espaço acima dos links
-    alignItems: 'center', // Centraliza horizontalmente
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
   },
   linkText: {
-    color: '#0066cc',     // Cor azul para links
-    marginTop: 10,        // Espaço entre os links
-    fontSize: 16,
+    color: '#E4002B',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });
