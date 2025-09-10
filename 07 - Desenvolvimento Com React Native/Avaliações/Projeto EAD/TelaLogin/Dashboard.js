@@ -69,7 +69,10 @@ export default function Dashboard({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao Burger King!</Text>
+      <Text style={[styles.title, { marginTop: 44 }]}>
+        Bem-vindo ao Burger King!
+      </Text>
+
 
       <FlatList
         data={burgers}
