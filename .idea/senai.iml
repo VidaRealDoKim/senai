@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/01 - Introdução ao Desenvolvmento Móvel/02 - Desenvolvendo uma tela de login/projeto1/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/01 - Introdução ao Desenvolvmento Móvel/02 - Desenvolvendo uma tela de login/projeto1/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/01 - Introdução ao Desenvolvmento Móvel/02 - Desenvolvendo uma tela de login/projeto1/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/aprendizagem/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/aprendizagem/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/aprendizagem/aprendizagem/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/aprendizagem/aprendizagem/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/aprendizagem/aprendizagem/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/aprendizagem/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/avaliação/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/avaliação/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Entregas/avaliação/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/analise-temperaturas-dart/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/analise-temperaturas-dart/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/analise-temperaturas-dart/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/banco01.dart/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/banco01.dart/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/banco01.dart/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/bancoapi/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/bancoapi/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/bancoapi/api_server/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/bancoapi/api_server/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/bancoapi/api_server/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Exercícios/bancoapi/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Módulo 5/banco01.dart/banco01.dart/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Módulo 5/banco01.dart/banco01.dart/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05 - Programação Orientada e Objetos/Módulo 5/banco01.dart/banco01.dart/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
