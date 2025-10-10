@@ -1,191 +1,193 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+// App.js
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  StatusBar,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-// ----------------------------
-// Inicializa o tabuleiro
-// ----------------------------
-const inicialTabuleiro = () => {
-  const tabuleiro = Array(8).fill(null).map(() => Array(8).fill(null));
+const Stack = createStackNavigator();
 
-  // peças pretas
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 8; j++) {
-      if ((i + j) % 2 === 1) tabuleiro[i][j] = '⚫';
-    }
-  }
+// ----------- Tela de Consulta -----------
+function ConsultaScreen({ navigation }) {
+  const [texto, setTexto] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [dados, setDados] = useState(null);
+  const [erro, setErro] = useState("");
 
-  // peças brancas
-  for (let i = 5; i < 8; i++) {
-    for (let j = 0; j < 8; j++) {
-      if ((i + j) % 2 === 1) tabuleiro[i][j] = '⚪';
-    }
-  }
-
-  return tabuleiro;
-};
-
-export default function App() {
-  const [tabuleiro, setTabuleiro] = useState(inicialTabuleiro());
-  const [selecionado, setSelecionado] = useState(null);
-  const [turnoBranco, setTurnoBranco] = useState(true);
-
-  // ----------------------------
-  // Calcula movimentos válidos (simples e capturas)
-  // ----------------------------
-  const movimentosValidos = (linha, coluna) => {
-    const peca = tabuleiro[linha][coluna];
-    if (!peca) return [];
-
-    const direcoes = [];
-    const éBranco = peca[0] === '⚪';
-    const éDama = peca.length === 2;
-
-    // Peões podem mover apenas para frente; damas para todas diagonais
-    if (éDama) {
-      direcoes.push([-1, -1], [-1, 1], [1, -1], [1, 1]);
-    } else {
-      const dir = éBranco ? -1 : 1;
-      direcoes.push([dir, -1], [dir, 1]);
-    }
-
-    const possiveis = [];
-
-    // movimentos simples
-    direcoes.forEach(([dl, dc]) => {
-      const l = linha + dl;
-      const c = coluna + dc;
-      if (l >= 0 && l < 8 && c >= 0 && c < 8 && !tabuleiro[l][c]) {
-        // para peões, só frente; damas podem todas
-        if (éDama || (dl === (éBranco ? -1 : 1))) possiveis.push([l, c]);
-      }
-    });
-
-    // capturas (para frente e para trás)
-    [[-1, -1], [-1, 1], [1, -1], [1, 1]].forEach(([dl, dc]) => {
-      const l1 = linha + dl;
-      const c1 = coluna + dc;
-      const l2 = linha + 2 * dl;
-      const c2 = coluna + 2 * dc;
-      if (
-        l2 >= 0 &&
-        l2 < 8 &&
-        c2 >= 0 &&
-        c2 < 8 &&
-        tabuleiro[l1][c1] &&
-        tabuleiro[l1][c1][0] !== peca[0] &&
-        !tabuleiro[l2][c2]
-      ) {
-        possiveis.push([l2, c2]);
-      }
-    });
-
-    return possiveis;
-  };
-
-  // ----------------------------
-  // Move peça selecionada
-  // ----------------------------
-  const moverPeca = (linha, coluna) => {
-    const peca = tabuleiro[linha][coluna];
-
-    if (peca) {
-      if ((turnoBranco && peca[0] === '⚪') || (!turnoBranco && peca[0] === '⚫')) {
-        setSelecionado({ linha, coluna });
-      }
+  const buscarVersiculo = async () => {
+    if (!texto.trim()) {
+      setErro("Digite algo como 'John 3:16'");
       return;
     }
+    try {
+      setErro("");
+      setLoading(true);
+      const response = await fetch(`https://bible-api.com/${texto}`);
+      const json = await response.json();
 
-    if (selecionado) {
-      const validos = movimentosValidos(selecionado.linha, selecionado.coluna);
-      if (validos.some(([l, c]) => l === linha && c === coluna)) {
-        const novaTabuleiro = tabuleiro.map(row => [...row]);
-        const movL = linha - selecionado.linha;
-        const movC = coluna - selecionado.coluna;
-
-        // captura de peça adversária
-        if (Math.abs(movL) === 2) {
-          const meioL = selecionado.linha + movL / 2;
-          const meioC = selecionado.coluna + movC / 2;
-          novaTabuleiro[meioL][meioC] = null;
-        }
-
-        // move peça
-        let novaPeca = novaTabuleiro[selecionado.linha][selecionado.coluna];
-
-        // promoção a dama
-        if (
-          (novaPeca[0] === '⚪' && linha === 0) ||
-          (novaPeca[0] === '⚫' && linha === 7)
-        ) {
-          novaPeca += 'D';
-        }
-
-        novaTabuleiro[linha][coluna] = novaPeca;
-        novaTabuleiro[selecionado.linha][selecionado.coluna] = null;
-
-        setTabuleiro(novaTabuleiro);
-        setSelecionado(null);
-        setTurnoBranco(!turnoBranco);
+      if (json.error) {
+        setErro("Versículo não encontrado!");
+        setDados(null);
+      } else {
+        setDados(json);
       }
+    } catch (e) {
+      setErro("Erro ao buscar dados");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // ----------------------------
-  // Renderização do tabuleiro
-  // ----------------------------
   return (
     <View style={styles.container}>
-      <Text style={styles.turno}>Turno: {turnoBranco ? 'Branco ⚪' : 'Preto ⚫'}</Text>
-      {tabuleiro.map((linha, i) => (
-        <View key={i} style={styles.row}>
-          {linha.map((peca, j) => {
-            const corCelula = (i + j) % 2 === 0 ? '#eee' : '#555';
-            const highlight =
-              selecionado && selecionado.linha === i && selecionado.coluna === j
-                ? 'yellow'
-                : corCelula;
-            return (
-              <TouchableOpacity
-                key={j}
-                style={[styles.celula, { backgroundColor: highlight }]}
-                onPress={() => moverPeca(i, j)}
-              >
-                <Text style={styles.peca}>{peca}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      ))}
+      <StatusBar barStyle="light-content" backgroundColor="#111" />
+
+      <Text style={styles.header}>📖 Bible Dashboard</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Ex: John 3:16"
+        placeholderTextColor="#aaa"
+        value={texto}
+        onChangeText={setTexto}
+      />
+
+      <TouchableOpacity style={styles.btn} onPress={buscarVersiculo}>
+        <Text style={styles.btnText}>🔍 Buscar</Text>
+      </TouchableOpacity>
+
+      {loading && (
+        <ActivityIndicator size="large" color="#FFD700" style={{ marginTop: 20 }} />
+      )}
+
+      {erro ? <Text style={styles.erro}>{erro}</Text> : null}
+
+      {dados && (
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => navigation.navigate("Detalhes", { versiculo: dados })}
+        >
+          <Text style={styles.referencia}>{dados.reference}</Text>
+          <Text numberOfLines={2} style={styles.preview}>
+            {dados.text}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
 
-// ----------------------------
-// Estilos
-// ----------------------------
+// ----------- Tela de Detalhes -----------
+function DetalhesScreen({ route }) {
+  const { versiculo } = route.params;
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>{versiculo.reference}</Text>
+
+      <FlatList
+        data={versiculo.verses}
+        keyExtractor={(item) => item.verse.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Text style={styles.referencia}>Verso {item.verse}</Text>
+            <Text style={styles.texto}>{item.text}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+// ----------- App Principal -----------
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: "#111" },
+          headerTintColor: "#FFD700",
+          headerTitleStyle: { fontWeight: "bold" },
+        }}
+      >
+        <Stack.Screen name="Consulta" component={ConsultaScreen} />
+        <Stack.Screen name="Detalhes" component={DetalhesScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+// ----------- Estilos (Dashboard) -----------
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#222',
-    padding: 10,
+    backgroundColor: "#1A1A1A",
+    padding: 20,
   },
-  row: {
-    flexDirection: 'row',
+  header: {
+    fontSize: 26,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#FFD700",
+    marginBottom: 20,
   },
-  celula: {
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  peca: {
-    fontSize: 24,
-  },
-  turno: {
-    fontSize: 18,
-    color: '#fff',
+  input: {
+    borderWidth: 1,
+    borderColor: "#333",
+    borderRadius: 12,
+    padding: 12,
+    backgroundColor: "#222",
+    color: "#fff",
     marginBottom: 10,
+    fontSize: 16,
+  },
+  btn: {
+    backgroundColor: "#FFD700",
+    padding: 15,
+    borderRadius: 12,
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  btnText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#111",
+  },
+  card: {
+    backgroundColor: "#2A2A2A",
+    borderRadius: 12,
+    padding: 15,
+    marginVertical: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  referencia: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#FFD700",
+    marginBottom: 8,
+  },
+  preview: {
+    fontSize: 15,
+    color: "#ccc",
+  },
+  texto: {
+    fontSize: 16,
+    color: "#eee",
+  },
+  erro: {
+    color: "red",
+    marginTop: 10,
+    textAlign: "center",
   },
 });
