@@ -1,9 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, ActivityIndicator, TouchableOpacity, Linking, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  ActivityIndicator,
+  TouchableOpacity,
+  Linking,
+  Alert
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
-import { Animated } from 'react-native';
+
+// Fallback caso a API falhe
+const fallbackRockets = [
+  {
+    id: '1',
+    name: 'Falcon 9',
+    country: 'USA',
+    description: 'Foguete reutilizável da SpaceX.',
+    wikipedia: 'https://en.wikipedia.org/wiki/Falcon_9',
+    flickr_images: ['https://live.staticflickr.com/65535/50012345678_abcdef.jpg']
+  },
+  {
+    id: '2',
+    name: 'Ariane 5',
+    country: 'França',
+    description: 'Foguete europeu de grande porte.',
+    wikipedia: 'https://en.wikipedia.org/wiki/Ariane_5',
+    flickr_images: ['https://live.staticflickr.com/65535/50098765432_abcdef.jpg']
+  }
+];
 
 export default function App() {
   const [rockets, setRockets] = useState([]);
@@ -13,12 +42,14 @@ export default function App() {
     fetch('https://api.spacexdata.com/v4/rockets')
       .then((res) => res.json())
       .then((data) => {
-        setRockets(data);
+        setRockets(data.length ? data : fallbackRockets);
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setRockets(fallbackRockets);
         setLoading(false);
+        Alert.alert('Erro', 'Não foi possível carregar dados da API. Usando fallback.');
       });
   }, []);
 
@@ -26,7 +57,8 @@ export default function App() {
     return (
       <LinearGradient colors={['#0f0c29', '#302b63', '#24243e']} style={styles.container}>
         <ActivityIndicator size="large" color="#fff" />
-        <Text style={styles.loadingText}>Carregando foguetes...</Text>
+        <Text style={styles.loadingText}>Preparando o lançamento...</Text>
+        <Ionicons name="rocket-outline" size={50} color="#fff" style={{ marginTop: 10 }} />
       </LinearGradient>
     );
   }
@@ -69,23 +101,15 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-  },
+  container: { flex: 1, paddingTop: 50 },
   header: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
-    gap: 10,
+    gap: 10
   },
-  title: {
-    color: '#fff',
-    fontSize: 22,
-    fontWeight: 'bold',
-    letterSpacing: 2,
-  },
+  title: { color: '#fff', fontSize: 22, fontWeight: 'bold', letterSpacing: 2 },
   card: {
     backgroundColor: 'rgba(255,255,255,0.1)',
     borderRadius: 16,
@@ -94,39 +118,18 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     shadowColor: '#fff',
     shadowOpacity: 0.4,
-    shadowRadius: 10,
+    shadowRadius: 10
   },
-  image: {
-    width: '100%',
-    height: 220,
-  },
-  cardInfo: {
-    padding: 12,
-  },
-  rocketName: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  desc: {
-    color: '#ccc',
-    marginTop: 8,
-    fontSize: 14,
-  },
+  image: { width: '100%', height: 220 },
+  cardInfo: { padding: 12 },
+  rocketName: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
+  desc: { color: '#ccc', marginTop: 8, fontSize: 14 },
   cardFooter: {
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center'
   },
-  country: {
-    color: '#fff',
-    fontSize: 13,
-    opacity: 0.7,
-  },
-  loadingText: {
-    color: '#fff',
-    marginTop: 10,
-    fontSize: 16,
-  },
+  country: { color: '#fff', fontSize: 13, opacity: 0.7 },
+  loadingText: { color: '#fff', marginTop: 10, fontSize: 16 }
 });
